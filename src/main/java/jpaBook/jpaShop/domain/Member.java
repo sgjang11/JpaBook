@@ -15,11 +15,12 @@ public class Member extends BaseEntity{
 
     private String name;
 
-    private String city;
-
-    private String street;
-
-    private String zipcode;
+    @Embedded
+    private Address address;
+    // 값 타입으로 활용
+    //private String city;
+    //private String street;
+    //private String zipcode;
 
     @OneToMany(mappedBy = "member")
     private List<Order> orders = new ArrayList<>();
@@ -40,7 +41,22 @@ public class Member extends BaseEntity{
         this.name = name;
     }
 
-    public String getCity() {
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
+    }
+
+    public List<Order> getOrders() {
+        return orders;
+    }
+
+    public void setOrders(List<Order> orders) {
+        this.orders = orders;
+    }
+/*    public String getCity() {
         return city;
     }
 
@@ -62,5 +78,5 @@ public class Member extends BaseEntity{
 
     public void setZipcode(String zipcode) {
         this.zipcode = zipcode;
-    }
+    }*/
 }
